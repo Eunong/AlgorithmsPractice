@@ -1,8 +1,6 @@
 package algorithms.programmers;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class Test42583 {
     public static int solution(int bridge_length, int weight, int[] truck_weights) {
