@@ -68,7 +68,6 @@ public class Test42578 {
        상의x+하의a, 상의x+하의b, 상의x+하의c, 상의x+하의x
     (상의2개와 상의를 안입는 경우) * (하의3개와 하의를 안입는 경우) 두 수의 곱으로 풀 수 있다.
     이 때, 상의와 하의를 모두 입지 않은 (상의x+하의x)의 경우. 즉 전체를 x를 고를 수 있는 경우 1은 항상 빼준다.
-
      */
     public static int solution2(String[][] clothes) {
         int sum = 1;
