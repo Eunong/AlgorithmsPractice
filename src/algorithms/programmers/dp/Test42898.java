@@ -1,5 +1,8 @@
-package algorithms.programmers;
+package algorithms.programmers.dp;
 
+// category : Dynamic Programming
+// 등굣길
+// https://school.programmers.co.kr/learn/courses/30/lessons/42898
 public class Test42898 {
     public static int solution(int m, int n, int[][] puddles) {
         int[][] map = new int[n][m];

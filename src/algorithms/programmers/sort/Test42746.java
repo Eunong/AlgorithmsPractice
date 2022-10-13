@@ -1,8 +1,9 @@
-package algorithms.programmers;
+package algorithms.programmers.sort;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
+// category : sort
 // 가장 큰 수
 // https://school.programmers.co.kr/learn/courses/30/lessons/42746
 public class Test42746 {

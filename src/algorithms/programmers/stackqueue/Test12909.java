@@ -1,7 +1,10 @@
-package algorithms.programmers;
+package algorithms.programmers.stackqueue;
 
 import java.util.ArrayList;
 
+// category : stack queue
+// 올바른 괄호
+// https://school.programmers.co.kr/learn/courses/30/lessons/12909
 public class Test12909 {
     static boolean solution(String s) {
 

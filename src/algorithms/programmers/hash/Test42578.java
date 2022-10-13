@@ -1,4 +1,4 @@
-package algorithms.programmers;
+package algorithms.programmers.hash;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 // category : hash
-// https://school.programmers.co.kr/learn/courses/30/lessons/42577
+// 위장
+// https://school.programmers.co.kr/learn/courses/30/lessons/42578
 public class Test42578 {
     static int sum = 0;
 

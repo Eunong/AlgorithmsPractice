@@ -1,8 +1,11 @@
-package algorithms.programmers;
+package algorithms.programmers.stackqueue;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
+// category : stack queue
+// 같은 숫자는 싫어
+// https://school.programmers.co.kr/learn/courses/30/lessons/12906
 public class Test12906 {
     public int[] solution(int []arr) {
 

@@ -1,4 +1,4 @@
-package algorithms.programmers;
+package algorithms.programmers.exhaustiveSearch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,6 @@ public class Test42840 {
         if(max == answerCount[2]) list.add(3);
 
         return list.stream().mapToInt(Integer::intValue).toArray();
-
     }
 
     public static void main(String[] args) {

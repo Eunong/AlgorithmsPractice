@@ -1,7 +1,10 @@
-package algorithms.programmers;
+package algorithms.programmers.stackqueue;
 
 import java.util.*;
 
+// category : stack queue
+// 다리를 지나는 트럭
+// https://school.programmers.co.kr/learn/courses/30/lessons/42583
 public class Test42583 {
     public static int solution(int bridge_length, int weight, int[] truck_weights) {
         int answer = 0;

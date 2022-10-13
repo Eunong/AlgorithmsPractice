@@ -1,8 +1,9 @@
-package algorithms.programmers;
+package algorithms.programmers.sort;
 
 import java.util.Arrays;
 
 // category : sort
+// K번째수
 // https://school.programmers.co.kr/learn/courses/30/lessons/42748
 public class Test42748 {
     public static int[] solution(int[] array, int[][] commands) {

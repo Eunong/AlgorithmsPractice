@@ -1,5 +1,8 @@
-package algorithms.programmers;
+package algorithms.programmers.dp;
 
+// category : Dynamic Programming
+// 정수 삼각형
+// https://school.programmers.co.kr/learn/courses/30/lessons/43105
 public class Test43105 {
     public static int solution(int[][] triangle) {
         int max = 0;

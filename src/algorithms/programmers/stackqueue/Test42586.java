@@ -1,7 +1,10 @@
-package algorithms.programmers;
+package algorithms.programmers.stackqueue;
 
 import java.util.*;
 
+// category : stack queue
+// 기능개발
+// https://school.programmers.co.kr/learn/courses/30/lessons/42586
 public class Test42586 {
     public static int[] solution(int[] progresses, int[] speeds) {
         int[] days = new int[progresses.length];

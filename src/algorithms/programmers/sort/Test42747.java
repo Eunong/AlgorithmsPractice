@@ -1,4 +1,4 @@
-package algorithms.programmers;
+package algorithms.programmers.sort;
 
 import java.util.Arrays;
 
@@ -28,6 +28,20 @@ public class Test42747 {
         }
 
         return 0;
+
+        // sample 답안
+        /*
+        Arrays.sort(citations);
+
+        int max = 0;
+        for(int i = citations.length-1; i > -1; i--){
+            System.out.println(citations[i] + ", " + (citations.length-i));
+            int min = (int)Math.min(citations[i], citations.length - i);
+            if(max < min) max = min;
+        }
+
+        return max;
+        */
     }
 
     public static void main(String[] args) {

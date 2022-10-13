@@ -1,8 +1,9 @@
-package algorithms.programmers;
+package algorithms.programmers.hash;
 
 import java.util.*;
 
 // category : hash
+// 베스트앨범
 // https://school.programmers.co.kr/learn/courses/30/lessons/42579
 public class Test42579 {
     public static int[] solution(String[] genres, int[] plays) {

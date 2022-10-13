@@ -1,10 +1,13 @@
-package algorithms.programmers;
+package algorithms.programmers.hash;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// category : hash
+// 포켓몬
+// https://school.programmers.co.kr/learn/courses/30/lessons/1845
 public class Test1845 {
     public static int solution(int[] nums) {
         int pickCnt = nums.length/2;

@@ -1,8 +1,9 @@
-package algorithms.programmers;
+package algorithms.programmers.hash;
 
 import java.util.*;
 
 // category : hash
+// 완주하지 못한 선수
 // https://school.programmers.co.kr/learn/courses/30/lessons/42576
 
 public class Test42576 {

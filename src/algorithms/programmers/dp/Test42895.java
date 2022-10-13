@@ -1,10 +1,13 @@
-package algorithms.programmers;
+package algorithms.programmers.dp;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// category : Dynamic Programming
+// N으로 표현
+// https://school.programmers.co.kr/learn/courses/30/lessons/42895
 public class Test42895 {
     public static int solution(int N, int number) {
         // 풀이 참조 https://small-stap.tistory.com/65
