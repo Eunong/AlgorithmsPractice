@@ -10,42 +10,49 @@ public class Test42839 {
     static Set<Integer> set;
 
     public static int solution(String numbers) {
-        int answer = 0;
-
         boolean[] visited = new boolean[numbers.length()];
         set = new HashSet<>();
 
         char[] output = new char[numbers.length()];
 
         for(int i=1; i<=numbers.length(); i++) {
-            permutation(numbers, visited, output, numbers.length(), i, 0);
+            permutation(numbers, output, visited, 0, numbers.length(), i);
         }
 
         System.out.println("set : " + set);
 
-        boolean isPrime = true;
-
+        int primeCnt = 0;
         for(int n : set) {
-            for(int i=2; i<=Math.sqrt(n); i++) {
-                if(n%i==0) {
-                    isPrime = false;
-                    break;
-                }
-            }
-            if(isPrime && n!=1) {
-                answer++;
+            if(isPrime(n)) {
+                primeCnt++;
             }
         }
-        return answer;
+        return primeCnt;
     }
 
-    static void permutation(String numbers, boolean visited[], char[] output, int n, int r, int depth){
+    // 소수인지 확인
+    static boolean isPrime(int n) {
+        if(n < 2 || n!=2 && n%2 == 0) { // 0, 1, 짝수는 소수가 아니므로 바로 return false
+            return false;
+        }
+
+        for(int i=3; i<=Math.sqrt(n); i+=2) { // 소스는 루트 N보다 작은 수 중 홀수로 나누어지는 수가 있는지 확인하면 됨.
+            if(n%i==0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    
+    // 순열 알고리즘
+    static void permutation(String numbers, char[] output, boolean visited[], int depth, int n, int r){
         if(depth==r){
             String s = "";
             for(int i=0; i<r; i++) {
                 s+=output[i];
             }
-
+            System.out.println(Integer.valueOf(s));
             set.add(Integer.valueOf(s));
         }
 
@@ -53,7 +60,7 @@ public class Test42839 {
             if(!visited[i]) {
                 visited[i] = true;
                 output[depth] = numbers.charAt(i);
-                permutation(numbers, visited, output, n, r, depth+1);
+                permutation(numbers, output, visited, depth+1, n, r);
                 visited[i]=false;
             }
         }
@@ -62,5 +69,9 @@ public class Test42839 {
     public static void main(String[] args) {
         System.out.println("TestCase1 : " + solution("17"));
         System.out.println("TestCase2 : " + solution("011"));
+        System.out.println("TestCase3 : " + solution("000"));
+        System.out.println("TestCase4 : " + solution("1"));
+        System.out.println("TestCase5 : " + solution("23"));
+        System.out.println("TestCase6 : " + solution("123"));
     }
 }
