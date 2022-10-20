@@ -1,7 +1,5 @@
 package algorithms.programmers.graph;
 
-import java.util.*;
-
 // category : graph
 // 순위
 // https://school.programmers.co.kr/learn/courses/30/lessons/49191
@@ -21,6 +19,9 @@ public class Test49191 {
         for(int i = 1; i <= n; i++) {
             for(int j = 1; j <= n; j++) {
                 for(int k = 1; k <= n; k++) {
+                    if(i == j || i == k) {
+                        continue;
+                    }
                     if(floyd[i][k]==1 && floyd[k][j]==1) {
                         floyd[i][j] = 1;
                         floyd[j][i] = -1;
@@ -33,8 +34,8 @@ public class Test49191 {
             }
         }
 
-        for(int i = 0; i < floyd.length; i++) {
-            for(int j = 0; j < floyd[i].length; j++) {
+        for(int i = 1; i < floyd.length; i++) {
+            for(int j = 1; j < floyd[i].length; j++) {
                 System.out.print(floyd[i][j] + " " );
             }
             System.out.println();
