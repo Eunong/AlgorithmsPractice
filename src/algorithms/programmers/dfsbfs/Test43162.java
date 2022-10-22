@@ -19,7 +19,6 @@ public class Test43162 {
                 }
             }
         }*/
-
         for(int i = 0; i < check.length; i++) { // 모든 노드를 방문할 때까지 dfs를 계속하고 dfs 수행 시작 회수를 합산해서 리턴
             if(!check[i]) {
                 answer += dfs(computers, i, n, check);
