@@ -1,36 +1,34 @@
 package algorithms.programmers.dfsbfs;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 // category : DFS/BFS
 // 단어 변환
 // https://school.programmers.co.kr/learn/courses/30/lessons/43163
+// 풀이 참조 : https://tosuccess.tistory.com/29 / https://jisunshine.tistory.com/157
 public class Test43163 {
-
     static boolean[] check;
-    static int min = 51; // 단어는 최대 50개 까지 있음
+    static int min; // 단어는 최대 50개 까지 있음
 
     public static int solution(String begin, String target, String[] words) {
         check = new boolean[words.length];
+        min = 51;
 
-        dfs(0, 0, target, words);
+        dfs(begin, target, 0, words);
 
         return min == 51 ? 0 : min;
     }
 
-    public static void dfs(int cnt, int cur, String target, String words[]) {
+    public static void dfs(String curWord, String target, int cnt, String words[]) {
         // 종료조건
-        if(target.equals(words[cur])) {
+        if(curWord.equals(target)) {
             min = Math.min(min, cnt);
             return;
         }
         
         // 진행조건
         for(int i = 0; i < words.length; i++) {
-            if(!check[i] && compare(words[cur], words[i])) {
+            if(!check[i] && compare(curWord, words[i])) {
                 check[i] = true;
-                dfs(cnt+1, i, target, words);
+                dfs(words[i], target, cnt+1, words);
                 check[i] = false;
             }
         }
