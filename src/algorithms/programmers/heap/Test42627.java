@@ -12,14 +12,11 @@ public class Test42627 {
         int end = 0; // 수행되고난 직후의 시간
         int idx = 0;
         int cnt = 0; // 요청 갯수
-
-        // 원본 배열 오름차순 정렬 (요청시간 오름차순)
-        Arrays.sort(jobs, (o1, o2) -> o1[0] - o2[0]);
-
+        
         // 요청시간으로 정렬
         Arrays.sort(jobs, (o1, o2) -> o1[0] - o2[0]);
 
-        PriorityQueue<int[]> heap = new PriorityQueue<>((o1, o2) -> o1[1] - o2[1]); // 우선순위 큐로 최소힙
+        PriorityQueue<int[]> heap = new PriorityQueue<>((o1, o2) -> o1[1] - o2[1]); // 우선순위 큐로 수행시간 짧은 순으로 정렬
 
         while(cnt < jobs.length) {
             // 작업 완료 시점까지 들어온 요청 add
