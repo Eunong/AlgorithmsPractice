@@ -6,92 +6,58 @@ import java.util.*;
 # category : greedy
 # 섬 연결하기
 # https://school.programmers.co.kr/learn/courses/30/lessons/42861
-# 참조 : 다익스트라 알고리즘 우선순위 큐 사용 - 최단경로 구하기
-         https://devfunny.tistory.com/641
+# 참고 : https://maetdori.tistory.com/category/%EC%A0%84%EA%B3%B5%EC%A7%80%EC%8B%9D
 */
 public class Test42861 {
-    private static class Node implements Comparable<Node>{
-        int node;
-        int weight;
+    private static int[] parent;
 
-        public Node(int node, int weight) {
-            this.node = node;
-            this.weight = weight;
-        }
-
-        public int getNode() {
+    // 부모노드가 자기 자신과 같은 노드를 찾을 때까지 호출
+    private static int findParent(int node) {
+        if(parent[node] == node) {
             return node;
         }
-
-        public int getWeight() {
-            return weight;
-        }
-
-        @Override
-        public int compareTo(Node o) {;
-            return this.weight - o.weight;
-        }
+        return parent[node] = findParent(parent[node]);
     }
 
+    /* Minimum Spanning Tree, Kruskal Algorithm 이용
+    - 가중치 무방향 그래프에서 모든 정점을 최소 비용으로 연결하는 방법
+    - 사이클을 형성하지 않아야 함
+    */
     public static int solution(int n, int[][] costs) {
-        int answer = 0;
+        int minWeight = 0;
 
-        // 가중치가 있는 인접리스트 생성
-        List<Node>[] graph = new ArrayList[n];
-        for(int i = 0; i < n; i++) {
-            graph[i] = new ArrayList<>();
+        // 가중치 기준으로 오름차순 정렬
+        Arrays.sort(costs, (int[] c1, int[] c2) -> c1[2]-c2[2]);
+        
+        // union find 사용하기 위한 parent 배열 선언
+        parent = new int[n];
+
+        for(int i = 0; i < n; i ++) {
+            parent[i] = i; // 최초에 부모 자기 자신으로 셋팅
         }
 
-        for(int i = 0; i < costs.length; i++) {
-            // 정점.add(Node(연결노드, 가중치))
-            // 양방향 그래프로 설정
-            graph[costs[i][0]].add(new Node(costs[i][1], costs[i][2]));
-            graph[costs[i][1]].add(new Node(costs[i][0], costs[i][2]));
-        }
+        for(int[] edge : costs) {
+            int start = edge[0];
+            int end   = edge[1];
+            int cost  = edge[2];
 
-        dijkstra(n, graph, 0);
-
-        return answer;
-    }
-
-    public static int dijkstra(int n, List<Node>[] graph, int start) {
-        int[] dist = new int[n]; // n번째 노드까지 갈 수 있는 최단 거리 저장 배열
-        PriorityQueue<Node> pq = new PriorityQueue<>();
-
-        // 최초 시작노드, 최단경로 0으로 셋팅
-        pq.offer(new Node(start, 0));
-        dist[start] = 0;
-
-        while(!pq.isEmpty()) {
-            Node node = pq.poll(); // 최단거리가 가장 짧은 노드
-
-            int v = node.getNode();
-            int w = node.getWeight();
-
-            if(dist[v] < w) {
+            // 부모 노드 확인 (두 노드가 같은 그래프상에 존재하는지 확인하기 위해)
+            int startParent = findParent(start);
+            int endParent   = findParent(end);
+            
+            if(startParent == endParent) {
                 continue;
             }
-            
-            // 현재 노드와 인접한 다른 노드 확인
-            for(int i = 0; i < graph[v].size(); i++) {
-                Node curNode = graph[v].get(i);
 
-                // 현재 최단거리 + 현재 연결된 노드의 비용
-                int cost = dist[v] + curNode.getWeight();
-
-                // 현재 노드를 거쳐 다른 노드로 이동하는 거리가 더 짧은 경우
-                if(cost < dist[curNode.getNode()]) {
-                    dist[curNode.getNode()] = cost;
-                    pq.offer(new Node(curNode.getNode(), cost));
-                }
-            }
+            minWeight += cost;
+            parent[endParent] = startParent; // 두 노드가 같은 그래프에 속하게 되었기 때문에 부모노드를 갱신한다.
         }
 
-        return 0;
+        return minWeight;
     }
 
     public static void main(String[] args) {
         System.out.println("TestCase1 : " + solution(4, new int[][]{{0,1,1},{0,2,2},{1,2,5},{1,3,1},{2,3,8}})); // 4
-        System.out.println("TestCase2 : " + solution(7, new int[][]{{2,3,7},{3,6,13},{3,5,23},{5,6,25},{0,1,29},{1,5,34},{1,2,35},{4,5,53},{0,4,75}})); // 4
+        System.out.println("TestCase2 : " + solution(7, new int[][]{{2,3,7},{3,6,13},{3,5,23},{5,6,25},{0,1,29},{1,5,34},{1,2,35},{4,5,53},{0,4,75}})); // 159
     }
 }
