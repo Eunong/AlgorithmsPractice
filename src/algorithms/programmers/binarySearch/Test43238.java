@@ -24,13 +24,15 @@ public class Test43238 {
 
             cnt = 0;
 
+            // 이진탐색 수행하는 mid분 동안 심사위원이 심사할 수 있는 최대 명수 구함
+            // 각 심사위원 별로 mid분 동안 심사할 수 있는 명수를 구하기 위해 -> (mid / times[i]) 한 후 누적 심사 완료 인원 cnt에 합산한다.
             for(int i = 0; i < times.length; i++) {
-                cnt += mid / times[i];
+                cnt += (mid / times[i]);
             }
 
-            if(cnt < mid) {
+            if(cnt < n) { // 심사 완료한 인원이 대기인원보다 적을 경우 : 소요시간 증가시키고 재 탐색
                 left = mid + 1;
-            } else {
+            } else { // 심사 완료한 인원이 대기인원보다 클 경우 : 소요시간 감소시키고 재 탐색
                 right  = mid - 1;
                 answer = mid;
             }
@@ -42,5 +44,6 @@ public class Test43238 {
     public static void main(String[] args) {
         System.out.println("TestCase1 : " + solution(6, new int[]{7, 10})); // 28
         System.out.println("TestCase2 : " + solution(10, new int[]{6, 8, 10})); // 30
+        System.out.println("TestCase3 : " + solution(3, new int[]{1, 1, 10})); // 2
     }
 }
